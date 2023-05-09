@@ -1,13 +1,14 @@
 import random
 import sys
 import time
-
+import pygame
 import pygame as pg
 
 
 WIDTH = 1600  # ゲームウィンドウの幅
 HEIGHT = 900  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 5  # 爆弾の数
+NUM_OF_EXPLOSION = 5
 
 
 def check_bound(area: pg.Rect, obj: pg.Rect) -> tuple[bool, bool]:
@@ -148,12 +149,15 @@ class Beam:
     爆発に関するクラス
     
     def __init__(self):
-        imgE = pg.transform.rotozoom(pg.image.load(f"ex03/fig/explosion.png"), 0, 2.0)
-        imgEf = pg.transform.flip(imgE, True, True)
-"""
+        img_E = pg.transform.rotozoom(pg.image.load(f"ex03/fig/explosion.png"), 0, 2.0)
+        imgE_f = pg.transform.flip(img_E, True, False)
         
+        _life = 
 
 
+    def update(self):
+         screen.blit(img_E, imgE_f)
+"""
 
 
 def main():
@@ -165,6 +169,11 @@ def main():
     bird = Bird(3, (900, 400))
     bombs = [Bomb() for _ in range(NUM_OF_BOMBS)]
     beam = None
+    score = 0  # 課題３
+
+    font1 = pygame.font.SysFont("hg正楷書体pro", 150)
+
+    #explosions = [Explosion() for _ in range(NUM_OF_EXPLOSION)]
 
     tmr = 0
     while True:
@@ -190,6 +199,8 @@ def main():
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
 
+        
+
         if beam is not None:  # ビームが存在しているとき
             beam.update(screen)
             for i, bomb in enumerate(bombs):
@@ -197,8 +208,10 @@ def main():
                     beam = None
                     del bombs[i]
                     bird.change_img(6, screen)
+                    score += 1 # 課題３
                     break
-
+        text1 = font1.render(str(score), True, (255,0,0))
+        screen.blit(text1, (40,30))
         pg.display.update()
         clock.tick(1000)
 

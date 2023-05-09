@@ -143,16 +143,17 @@ class Beam:
         """
         self._rct.move_ip(self._vx, self._vy)
         screen.blit(self._img, self._rct)
+"""
+class Explosion:  # 課題１ 
 
-"""class Explosion:  # 課題１ 
-    
     爆発に関するクラス
-    
+
     def __init__(self):
         img_E = pg.transform.rotozoom(pg.image.load(f"ex03/fig/explosion.png"), 0, 2.0)
         imgE_f = pg.transform.flip(img_E, True, False)
-        
-        _life = 
+        Ex_pl = rct.center
+        while True:
+            _life += 1
 
 
     def update(self):
@@ -171,7 +172,7 @@ def main():
     beam = None
     score = 0  # 課題３
 
-    font1 = pygame.font.SysFont("hg正楷書体pro", 150)
+    font1 = pygame.font.SysFont("hg正楷書体pro", 150)  # 追加機能１
 
     #explosions = [Explosion() for _ in range(NUM_OF_EXPLOSION)]
 
@@ -208,7 +209,7 @@ def main():
                     beam = None
                     del bombs[i]
                     bird.change_img(6, screen)
-                    score += 1 # 課題３
+                    score += 1 # 追加機能３
                     break
         text1 = font1.render(str(score), True, (255,0,0))
         screen.blit(text1, (40,30))

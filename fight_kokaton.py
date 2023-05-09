@@ -143,6 +143,18 @@ class Beam:
         self._rct.move_ip(self._vx, self._vy)
         screen.blit(self._img, self._rct)
 
+"""class Explosion:  # 課題１ 
+    
+    爆発に関するクラス
+    
+    def __init__(self):
+        imgE = pg.transform.rotozoom(pg.image.load(f"ex03/fig/explosion.png"), 0, 2.0)
+        imgEf = pg.transform.flip(imgE, True, True)
+"""
+        
+
+
+
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
